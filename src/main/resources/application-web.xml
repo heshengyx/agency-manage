@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:p="http://www.springframework.org/schema/p"
+	xmlns:tx="http://www.springframework.org/schema/tx" xmlns:aop="http://www.springframework.org/schema/aop"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
+	http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-3.0.xsd
+	http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-3.0.xsd
+	http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-3.0.xsd">
+	
+	<!-- 自动扫描dao和service包(自动注入)-->
+	<context:component-scan base-package="com.house.agency.security" />
+		 
+	<bean id="userService" class="org.springframework.remoting.caucho.HessianProxyFactoryBean">
+    <property name="serviceUrl">  
+      <value>http://127.0.0.1:8081/agency-core/hessian/userService</value>   
+    </property>   
+    <property name="serviceInterface">  
+      <value>com.house.agency.service.IUserService</value>  
+    </property>
+  </bean>
+  <bean id="roleService" class="org.springframework.remoting.caucho.HessianProxyFactoryBean">
+    <property name="serviceUrl">  
+      <value>http://127.0.0.1:8081/agency-core/hessian/roleService</value>   
+    </property>   
+    <property name="serviceInterface">  
+      <value>com.house.agency.service.IRoleService</value>  
+    </property>
+  </bean>
+  <bean id="permissionService" class="org.springframework.remoting.caucho.HessianProxyFactoryBean">
+    <property name="serviceUrl">  
+      <value>http://127.0.0.1:8081/agency-core/hessian/permissionService</value>   
+    </property>   
+    <property name="serviceInterface">  
+      <value>com.house.agency.service.IPermissionService</value>  
+    </property>
+  </bean>
+  <bean id="regionService" class="org.springframework.remoting.caucho.HessianProxyFactoryBean">
+    <property name="serviceUrl">  
+      <value>http://127.0.0.1:8081/agency-core/hessian/regionService</value>   
+    </property>   
+    <property name="serviceInterface">  
+      <value>com.house.agency.service.IRegionService</value>  
+    </property>
+  </bean>
+  <bean id="buildingService" class="org.springframework.remoting.caucho.HessianProxyFactoryBean">
+    <property name="serviceUrl">  
+      <value>http://127.0.0.1:8081/agency-core/hessian/buildingService</value>   
+    </property>   
+    <property name="serviceInterface">  
+      <value>com.house.agency.service.IBuildingService</value>  
+    </property>
+  </bean>
+  <bean id="buildingUnitService" class="org.springframework.remoting.caucho.HessianProxyFactoryBean">
+    <property name="serviceUrl">  
+      <value>http://127.0.0.1:8081/agency-core/hessian/buildingUnitService</value>   
+    </property>   
+    <property name="serviceInterface">  
+      <value>com.house.agency.service.IBuildingUnitService</value>  
+    </property>
+  </bean>
+  <bean id="houseService" class="org.springframework.remoting.caucho.HessianProxyFactoryBean">
+    <property name="serviceUrl">  
+      <value>http://127.0.0.1:8081/agency-core/hessian/houseService</value>   
+    </property>   
+    <property name="serviceInterface">  
+      <value>com.house.agency.service.IHouseService</value>  
+    </property>
+  </bean>
+  <bean id="imageService" class="org.springframework.remoting.caucho.HessianProxyFactoryBean">
+    <property name="serviceUrl">  
+      <value>http://127.0.0.1:8081/agency-core/hessian/imageService</value>   
+    </property>   
+    <property name="serviceInterface">  
+      <value>com.house.agency.service.IImageService</value>  
+    </property>
+  </bean>
+  <bean id="tradeService" class="org.springframework.remoting.caucho.HessianProxyFactoryBean">
+    <property name="serviceUrl">  
+      <value>http://127.0.0.1:8081/agency-core/hessian/tradeService</value>   
+    </property>   
+    <property name="serviceInterface">  
+      <value>com.house.agency.service.ITradeService</value>  
+    </property>
+  </bean>
+  <bean id="tradeImageService" class="org.springframework.remoting.caucho.HessianProxyFactoryBean">
+    <property name="serviceUrl">  
+      <value>http://127.0.0.1:8081/agency-core/hessian/tradeImageService</value>   
+    </property>   
+    <property name="serviceInterface">  
+      <value>com.house.agency.service.ITradeImageService</value>  
+    </property>
+  </bean>
+  <bean id="configureService" class="org.springframework.remoting.caucho.HessianProxyFactoryBean">
+    <property name="serviceUrl">  
+      <value>http://127.0.0.1:8081/agency-core/hessian/configureService</value>   
+    </property>   
+    <property name="serviceInterface">  
+      <value>com.house.agency.service.IConfigureService</value>  
+    </property>
+  </bean>
+  <bean id="customerService" class="org.springframework.remoting.caucho.HessianProxyFactoryBean">
+    <property name="serviceUrl">  
+      <value>http://127.0.0.1:8081/agency-core/hessian/customerService</value>   
+    </property>   
+    <property name="serviceInterface">  
+      <value>com.house.agency.service.ICustomerService</value>  
+    </property>
+  </bean>
+  <bean id="customerRequireService" class="org.springframework.remoting.caucho.HessianProxyFactoryBean">
+    <property name="serviceUrl">  
+      <value>http://127.0.0.1:8081/agency-core/hessian/customerRequireService</value>   
+    </property>   
+    <property name="serviceInterface">  
+      <value>com.house.agency.service.ICustomerRequireService</value>  
+    </property>
+  </bean>
+  
+	<bean id="messageSource" class="org.springframework.context.support.ResourceBundleMessageSource">  
+		<property name="basename" value="messages"/>
+		<property name="useCodeAsDefaultMessage" value="true" />
+	</bean>
+	<bean id="localeChangeInterceptor"
+		class="org.springframework.web.servlet.i18n.LocaleChangeInterceptor">
+		<property name="paramName" value="locale" />
+	</bean>
+	<bean id="localeResolver" class="org.springframework.web.servlet.i18n.CookieLocaleResolver" /> 
+</beans>

@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<sitemesh>
+	<!-- 对不同的路径，启用不同的装饰器 -->
+	<mapping path="/manage" decorator="/WEB-INF/layout/mainLayout.jsp"/>
+	<mapping path="/manage/house/used/sale" decorator="/WEB-INF/layout/mainLayout.jsp"/>
+	<mapping path="/manage/house/new/sale" decorator="/WEB-INF/layout/mainLayout.jsp"/>
+	
+	<mapping path="/manage/building" decorator="/WEB-INF/layout/mainLayout.jsp"/>
+	<mapping path="/manage/house" decorator="/WEB-INF/layout/mainLayout.jsp"/>
+	
+	<mapping path="/manage/customer" decorator="/WEB-INF/layout/mainLayout.jsp"/>
+	<mapping path="/manage/customerRequire" decorator="/WEB-INF/layout/mainLayout.jsp"/>
+	
+	<mapping path="/manage/region/country" decorator="/WEB-INF/layout/mainLayout.jsp"/>
+	<mapping path="/manage/region/province" decorator="/WEB-INF/layout/mainLayout.jsp"/>
+	<mapping path="/manage/region/city" decorator="/WEB-INF/layout/mainLayout.jsp"/>
+	<mapping path="/manage/region/district" decorator="/WEB-INF/layout/mainLayout.jsp"/>
+	<mapping path="/manage/region/town" decorator="/WEB-INF/layout/mainLayout.jsp"/>
+	
+	<!-- 排除，不进行装饰的路径 -->
+	<mapping path="/avatars/*" exclude="true"/>
+	<mapping path="/images/*" exclude="true"/>
+	<mapping path="/css/*" exclude="true"/>
+	<mapping path="/js/*" exclude="true"/>
+	<mapping path="/fonts/*" exclude="true"/>
+	
+	<!-- 自定义 tag 规则 -->
+	<content-processor>
+		<tag-rule-bundle class="com.house.agency.tag.NavTitleTagRuleBundle" />
+		<tag-rule-bundle class="com.house.agency.tag.JscriptTagRuleBundle" />
+		<tag-rule-bundle class="com.house.agency.tag.CssTagRuleBundle" />
+	</content-processor>
+</sitemesh>
