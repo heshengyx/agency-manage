@@ -286,29 +286,23 @@
                             <div class="col-md-8">
 		                          <select class="input-select" id="roomAdd">
 		                            <option value="0">选择室</option>
-		                            <option value="1">1室</option>
-		                            <option value="2">2室</option>
-		                            <option value="3">3室</option>
-		                            <option value="4">4室</option>
-		                            <option value="5">5室</option>
+		                            <c:forEach var="data" items="${rooms}">
+		                            <option value="${data.key}">${data.value}</option>
+																</c:forEach>
 		                          </select>
 		                          <small>~</small>
 		                          <select class="input-select" id="saloonAdd">
 		                            <option value="0">选择厅</option>
-		                            <option value="1">1厅</option>
-		                            <option value="2">2厅</option>
-		                            <option value="3">3厅</option>
-		                            <option value="4">4厅</option>
-		                            <option value="5">5厅</option>
+		                            <c:forEach var="data" items="${saloons}">
+                                <option value="${data.key}">${data.value}</option>
+                                </c:forEach>
 		                          </select>
 		                          <small>~</small>
 		                          <select class="input-select" id="toiletAdd">
 		                            <option value="0">选择卫</option>
-		                            <option value="1">1卫</option>
-		                            <option value="2">2卫</option>
-		                            <option value="3">3卫</option>
-		                            <option value="4">4卫</option>
-		                            <option value="5">5卫</option>
+		                            <c:forEach var="data" items="${toilets}">
+                                <option value="${data.key}">${data.value}</option>
+                                </c:forEach>
 		                          </select>
 		                        </div>
                           </div>

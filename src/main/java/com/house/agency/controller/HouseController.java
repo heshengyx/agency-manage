@@ -12,9 +12,10 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.house.agency.data.home.HouseHomeData;
-import com.house.agency.data.home.HouseHomeDescData;
+import com.house.agency.data.home.HouseHomeInfoData;
 import com.house.agency.data.manage.HouseManageData;
 import com.house.agency.entity.House;
+import com.house.agency.enums.ConfigureEnum;
 import com.house.agency.page.IPage;
 import com.house.agency.param.home.HouseHomeQueryParam;
 import com.house.agency.param.manage.HouseManageQueryParam;
@@ -73,7 +74,7 @@ public class HouseController extends BaseController {
 	@ResponseBody
 	public Object select(String buildingUnitId) {
 		JsonMessage jMessage = new JsonMessage();
-		List<HouseHomeDescData> datas = null;
+		List<HouseHomeInfoData> datas = null;
 		try {
 			datas = houseService.queryByBuildingUnitId(buildingUnitId);
 			jMessage.setStatus(JsonMessage.TRUE);
@@ -114,8 +115,27 @@ public class HouseController extends BaseController {
 	public String pageHouse(Model model) {
 		setModel(model, regionService);
 		
-		String imageUrl = configureService.getValueByKey("image_url");
-		model.addAttribute("imageUrl", imageUrl);
+		String imageUrl = ConfigureEnum.IMAGE_URL.getValue();
+		String rooms = ConfigureEnum.ROOMS.getValue();
+		String saloons = ConfigureEnum.SALOONS.getValue();
+		String toilets = ConfigureEnum.TOILETS.getValue();
+		
+		StringBuilder keys = new StringBuilder("");
+		keys.append("'");
+		keys.append(imageUrl);
+		keys.append("','");
+		keys.append(rooms);
+		keys.append("','");
+		keys.append(saloons);
+		keys.append("','");
+		keys.append(toilets);
+		keys.append("'");
+		
+		Map<String, String> map = configureService.queryValueByKey(keys.toString());
+		model.addAttribute("imageUrl", map.get(imageUrl));
+		model.addAttribute("rooms", MapUtil.getMapKeyLong(map.get(rooms), "[,]"));
+		model.addAttribute("saloons", MapUtil.getMapKeyLong(map.get(saloons), "[,]"));
+		model.addAttribute("toilets", MapUtil.getMapKeyLong(map.get(toilets), "[,]"));
 		return "houses";
 	}
 	
