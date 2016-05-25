@@ -82,10 +82,10 @@ public class SecurityRealm extends AuthorizingRealm {
 		System.out.println("login token:"
 				+ ReflectionToStringBuilder.toString(token,
 						ToStringStyle.MULTI_LINE_STYLE));
-		User user = userService.getDataByUsername(token.getUsername());
+		User user = userService.getDataByAccount(token.getUsername());
 		if (null != user) {
 			authcInfo = new SimpleAuthenticationInfo(user,
-					user.getPassword(), user.getUsername());
+					user.getPassword(), token.getUsername());
 			this.setSession("currentUser", user);
 		}
 		return authcInfo;
